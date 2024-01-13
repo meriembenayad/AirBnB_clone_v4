@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>HBNB</title>
+	</head>
+	<body>
+		{% if state %}
+			<H1>State: {{ state.name }}</H1>
+			<h3>Cities:</h3>
+			<UL>
+				{% for city in state.cities | sort(attribute='name') %}
+				<li>{{ city.id }}: <b>{{ city.name }}</b></li>
+				{% endfor %}
+			</UL>
+		{% else %}
+			<h1>Not found!</h1>
+		{% endif %}
+	</body>
+</html>
