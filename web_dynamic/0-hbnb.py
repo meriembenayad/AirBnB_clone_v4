@@ -7,7 +7,7 @@ from uuid import uuid4
 app = Flask(__name__)
 
 
-@app.route('/hbnb', strict_slashes=False)
+@app.route('/0-hbnb', strict_slashes=False)
 def cities_state_db():
     """ cities of state from DBStorage """
     data = {
