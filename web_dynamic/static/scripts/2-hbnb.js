@@ -15,12 +15,20 @@ $('document').ready(function () {
     }   
   });
 
-  let url = 'http://0.0.0.0:5001/api/v1/status/';
-  $.get(url, function (data) {
-    if (data.status === 'OK') {
-      $('#api_status').addClass('available');
-    } else {
-      $('#api_status').removeClass('available');
-    }
-  });
+  // Function to update the status
+  function updateApiStatus() {
+    $.get("http://127.0.0.1:5001/api/v1/status/", (data) => {
+      if (data.status === "OK") {
+        $("#api_status").addClass("available");
+      } else {
+        $("#api_status").removeClass("available");
+      }
+    }).fail(() => {
+      $("#api_status").removeClass("available");
+    });
+  }
+
+  // Initial status update
+  updateApiStatus();
+  setInterval(updateApiStatus, 30000);
 });
